@@ -22,7 +22,7 @@ public class SimpleLogCleaningMapper extends Mapper<LongWritable, Text, Text, Nu
     }
 
     private boolean CleanResult(String line, Context context) {
-        String [] lines = line.split(" ");
+        String[] lines = line.split(" ");
         if (lines.length > 11) {
             context.getCounter("cleanmap", "true").increment(1);
             return true;
@@ -30,5 +30,6 @@ public class SimpleLogCleaningMapper extends Mapper<LongWritable, Text, Text, Nu
             context.getCounter("cleanmap", "false").increment(1);
             return false;
         }
+
     }
 }
