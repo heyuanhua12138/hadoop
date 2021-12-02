@@ -118,6 +118,7 @@ public class DataUtil {
 
     /**
      * 删除一行数据
+     *
      * @param connection
      * @param nameSpace
      * @param tableName
@@ -134,5 +135,29 @@ public class DataUtil {
         table.delete(delete);
         table.close();
         return true;
+    }
+
+    /**
+     * 开启write buffer写缓存的put
+     *
+     * @param connection
+     * @param nameSpace
+     * @param tableName
+     * @param rowKey
+     * @param cf
+     * @param colName
+     * @param value
+     */
+    public static void putWithSetAutoFlushTo(Connection connection, String nameSpace, String tableName, String rowKey, String cf, String colName, String value) throws IOException {
+        TableName tableName1 = TableUtil.getTableName(nameSpace, tableName);
+        HTable hTable = new HTable(tableName1, connection);
+        LOGGER.error("是否禁用写缓存==" + hTable.isAutoFlush());
+        Put put = new Put(Bytes.toBytes(rowKey));
+        put.addColumn(Bytes.toBytes(cf), Bytes.toBytes(colName), Bytes.toBytes(value));
+        hTable.put(put);
+        hTable.setAutoFlushTo(false);
+        LOGGER.error("是否禁用写缓存==" + hTable.isAutoFlush());
+        hTable.flushCommits();
+        hTable.close();
     }
 }

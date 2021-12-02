@@ -45,4 +45,10 @@ public class TestData {
         DataUtil.delete(connection,"","t2","a3");
     }
 
+    @org.junit.Test
+    public void putWithSetAutoFlushTo() throws IOException {
+        DataUtil.putWithSetAutoFlushTo(connection,"","t2","a5","info","name","hyh5");
+    }
+
+
 }
