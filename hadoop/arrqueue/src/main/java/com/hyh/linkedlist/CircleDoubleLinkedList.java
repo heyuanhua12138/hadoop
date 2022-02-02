@@ -1,6 +1,6 @@
 package com.hyh.linkedlist;
 
-public class CircleDoubleLinkedList extends DoubleLinkedList {
+public class CircleDoubleLinkedList<T> extends DoubleLinkedList {
     @Override
     public void add(Object ele) {
         super.add(ele);
@@ -22,5 +22,4 @@ public class CircleDoubleLinkedList extends DoubleLinkedList {
             tail.next = head;
         }
     }
-
 }

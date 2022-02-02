@@ -6,8 +6,8 @@ import org.slf4j.LoggerFactory;
 public class DoubleLinkedList<T> {
     private Logger logger = LoggerFactory.getLogger(DoubleLinkedList.class);
 
-    class Node<T> {
-        private T value;
+    public class Node<T> {
+        public T value;
         public Node pre;
         public Node next;
 
