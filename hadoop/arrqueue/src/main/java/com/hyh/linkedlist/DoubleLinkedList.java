@@ -8,8 +8,8 @@ public class DoubleLinkedList<T> {
 
     class Node<T> {
         private T value;
-        private Node pre;
-        private Node next;
+        public Node pre;
+        public Node next;
 
         public Node(T value, Node pre, Node next) {
             this.value = value;
@@ -18,8 +18,8 @@ public class DoubleLinkedList<T> {
         }
     }
 
-    private Node head = null;
-    private Node tail = null;
+    public Node head = null;
+    public Node tail = null;
 
     /**
      * 双向链表添加元素
@@ -50,7 +50,7 @@ public class DoubleLinkedList<T> {
             do {
                 System.out.println(tmp.value);
                 tmp = tmp.next;
-            } while (tmp != null);
+            } while (tmp != null && tmp != head);
         }
     }
 
@@ -68,7 +68,7 @@ public class DoubleLinkedList<T> {
                     return true;
                 }
                 tmp = tmp.next;
-            } while (tmp != null);
+            } while (tmp != null && tmp != head);
         }
         return false;
     }
@@ -119,7 +119,7 @@ public class DoubleLinkedList<T> {
                 return tmp;
             }
             tmp = tmp.next;
-        } while (tmp != null);
+        } while (tmp != null && tmp != head);
         return null;
     }
 
